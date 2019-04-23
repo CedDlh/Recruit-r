@@ -13,18 +13,10 @@ class PositionsControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should call a single existing position" do
- test_position3 = Position.create(name: "JS lover", skill: "Javascript")
+    test_position3 = Position.create(name: "JS lover", skill: "Javascript")
     test_position3.save
-    # get position
-    # assert_response :success
-
-  assert_equal test_position3.id, Position.last.id
-
-
+    assert_equal test_position3.id, Position.last.id
   end
-
-
-
 
 
   test "should create valid position with name and skills " do
