@@ -1,14 +1,9 @@
 class PositionsController < ApplicationController
 
- def create
-   #position_params['skill'] = position_params['skill'].split(",")
-   @position = Position.new(position_params)
-   #@position.name = params
-   @position.save
- end
-
-
-
+  def create
+    @position = Position.new(position_params)
+    @position.save
+  end
 
  private
 
