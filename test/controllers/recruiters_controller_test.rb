@@ -8,6 +8,7 @@ class RecruitersControllerTest < ActionDispatch::IntegrationTest
     test_recruiter.save
     test_recruiter1 = Recruiter.create(name: "Amigo", skills: "Javascript")
     test_recruiter1.save
+    test_recruiter1.skills
     test_recruiter_all = Recruiter.all
     assert_equal test_recruiter_all , Recruiter.all
   end

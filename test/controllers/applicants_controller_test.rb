@@ -27,12 +27,15 @@ class ApplicantsControllerTest < ActionDispatch::IntegrationTest
   test "should update the user" do
     test_recruiter = Recruiter.create(name:"Pablo", skills: "Ruby" )
     test_recruiter.save
+
     test_position = Position.create(name: "Engineer", skill: "Javascript")
     test_position.save
+
     test_applicant = Applicant.create(first_name: "Cedric",
                                           last_name: "Dlh", email:"cedricdlh@gmail.com", position_id: test_position.id)
     test_applicant.save
     test_Applicant = Applicant.update(recruiter_id: test_recruiter.id)
+
     test_applicant.save
     assert_equal test_recruiter.id, Applicant.last.recruiter_id
   end
