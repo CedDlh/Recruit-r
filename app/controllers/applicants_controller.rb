@@ -2,6 +2,8 @@ class ApplicantsController < ApplicationController
 
   def show
     @applicant = Applicant.find(params[:id])
+    @appointment = Appointment.new
+    @recruiter = Recruiter.find(@applicant.recruiter_id)
   end
 
   def create
