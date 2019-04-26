@@ -2,11 +2,12 @@ class AppointmentsController < ApplicationController
 
 
   def new
-  @appointment = Appointment.new
+    @appointment = Appointment.new
   end
 
    def create
      @appointment = Appointment.new(appointment_params)
+
      #@recruiter = Recruiter.find(params[:id])
      # @applicant = Applicant.find(params[:applicant_id])
      #
