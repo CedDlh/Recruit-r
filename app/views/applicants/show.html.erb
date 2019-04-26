@@ -1,30 +1,28 @@
 
 
 
-
-
-
-
-
-
-
-
-
-
+<h1>Possible recruiters for <%= @applicant.first_name %>
+</h1>
 <div>
-<%= simple_form_for @appointment, url: appointments_path do |f| %>
-  <%= f.error_notification %>
 
-  <%= f.input :time %>
 
-  <%= f.input :date %>
+<%#= form_tag applicant_path method: (:get|:post|:patch|:put|:delete) do %>
 
-  <%= f.input :applicant_id %>
+<% @rec_matches.each do |match| %>
 
-  <%=f.input :recruiter_id %>
+<input type="radio" name="recruiter-id" value=<%= match.id %>/><%= match.name %> <br>
 
-  <%= f.button :submit, class: "btn-primary" %>
-  <%#= f.button :button, "Cancel", type: "submit", class: "btn-outline-secondary" %>
 <% end %>
+<%# end %>
+<!-- <button type="submit">SUBMIT</button> -->
+<!-- </form> -->
 
 </div>
+
+
+
+
+
+
+
+

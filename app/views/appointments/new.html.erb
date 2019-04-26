@@ -1,0 +1,17 @@
+
+
+<div>
+<%= simple_form_for @appointment, url: appointments_path do |f| %>
+  <%= f.error_notification %>
+
+  <%= f.input :time %>
+
+  <%= f.input :date %>
+
+  <%= f.input :recruiter_id, :collection => @match_name %>
+
+  <%= f.button :submit, class: "btn-primary" %>
+  <%#= f.button :button, "Cancel", type: "submit", class: "btn-outline-secondary" %>
+<% end %>
+
+</div>
