@@ -1,14 +1,24 @@
 class ApplicantsController < ApplicationController
 
+  def new
+  @applicant = Applicant.new
+  end
+
+
   def show
     @applicant = Applicant.find(params[:id])
     @appointment = Appointment.new
-    @recruiter = Recruiter.find(@applicant.recruiter_id)
+    #@recruiter = Recruiter.find(@applicant.recruiter_id)
   end
 
   def create
     @applicant = Applicant.new(applicant_params)
-    @applicant.save!
+    if @applicant.save!
+      redirect_to applicant_path(@applicant)
+    else
+      redirect_to applicant_path
+
+    end
   end
 
   def update
@@ -20,6 +30,6 @@ class ApplicantsController < ApplicationController
 private
 
   def applicant_params
-    params.require(:applicant).permit(:first_name, :last_name, :email, :position_id, :reruiter_id)
+    params.require(:applicant).permit(:first_name, :last_name, :email, :position_id)
   end
 end

@@ -1,0 +1,15 @@
+<div>
+<%= simple_form_for @applicant, url: applicants_path, method: :post do |f| %>
+  <%= f.error_notification %>
+
+  <%= f.input :first_name %>
+
+  <%= f.input :last_name %>
+
+  <%=f.input :email %>
+
+  <%= f.input :position_id %>
+
+  <%= f.button :submit, class: "btn-primary" %>
+  <%#= f.button :button, "Cancel", type: "submit", class: "btn-outline-secondary" %>
+<% end %>
