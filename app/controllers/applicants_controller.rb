@@ -22,6 +22,7 @@ class ApplicantsController < ApplicationController
     @match_name = []
     @rec_matches.each do |match|
       @match_name << match.name
+
     end
 
     #@recruiter = Recruiter.find(@applicant.recruiter_id)
@@ -46,6 +47,6 @@ class ApplicantsController < ApplicationController
 private
 
   def applicant_params
-    params.require(:applicant).permit(:first_name, :last_name, :email, :position_id)
+    params.require(:applicant).permit(:first_name, :last_name, :email, :position_id, :recruiter_id)
   end
 end

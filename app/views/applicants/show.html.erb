@@ -3,26 +3,18 @@
 
 <h1>Possible recruiters for <%= @applicant.first_name %>
 </h1>
-<div>
 
 
-<%#= form_tag applicant_path method: (:get|:post|:patch|:put|:delete) do %>
 
-<% @rec_matches.each do |match| %>
+<%@match_name.each do |match| %>
+    <ul>
+      <li><%= match %></li>
+    </ul>
+  <% end %>
 
-<input type="radio" name="recruiter-id" value=<%= match.id %>/><%= match.name %> <br>
 
+
+<%= simple_form_for(@applicant, url: applicant_path, method: :patch) do |f| %>
+  <%= f.select :recruiter_id, @match_name, as: :radio_buttons %>
+  <%= f.button :submit %>
 <% end %>
-<%# end %>
-<!-- <button type="submit">SUBMIT</button> -->
-<!-- </form> -->
-
-</div>
-
-
-
-
-
-
-
-
