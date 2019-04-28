@@ -10,4 +10,7 @@ Rails.application.routes.draw do
   resources :recruiters, only: [:index]
   resources :appointments, only: [:new, :create]
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
+
+  get '/redirect', to: 'example#redirect', as: 'redirect'
+  get '/callback', to: 'example#callback', as: 'callback'
 end
