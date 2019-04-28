@@ -21,10 +21,12 @@ class ApplicantsController < ApplicationController
     # Create rec_matches array of names
     @match_name = []
     @rec_matches.each do |match|
-      @match_name << match.name
+      @match_name << match.id
+    #@applicant.recruiter_id = 2#
+     @match_name
 
     end
-
+     @applicant.save!
     #@recruiter = Recruiter.find(@applicant.recruiter_id)
   end
 

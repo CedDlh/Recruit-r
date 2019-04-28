@@ -13,4 +13,6 @@ Rails.application.routes.draw do
 
   get '/redirect', to: 'example#redirect', as: 'redirect'
   get '/callback', to: 'example#callback', as: 'callback'
+  get '/calendars', to: 'example#calendars', as: 'calendars'
+  post '/events', to: 'example#new_event', as: 'new_event', calendar_id: /[^\/]+/
 end
