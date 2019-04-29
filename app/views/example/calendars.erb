@@ -1,0 +1,11 @@
+
+<h2> You will now share this event on  <%= @applicant.first_name %>'s and <%= @recruiter.name %>'s calendar</h2>
+
+<h3>This event will take place on <%= @date %></h3>
+
+
+
+<%= form_tag new_event_url do %>
+  <%= submit_tag 'Confirm' %>
+<% end %>
+

@@ -1,20 +1,20 @@
 
 
+<h1>
+  Choose a date and time for the appointment between <%= @applicant.first_name %> and <%= @recruiter.name %>
+
+</h1>
+
+
 <div>
 <%= simple_form_for(@appointment, url: appointments_path, method: :post) do |f| %>
   <%= f.error_notification %>
 
   <%= f.input :datetime %>
 
-  <% f.input :date %>
-
   <%= f.button :submit, class: "btn-primary" %>
-  <%#= f.button :button, "Cancel", type: "submit", class: "btn-outline-secondary" %>
 <% end %>
 
 </div>
 
 
-<%= form_tag new_event_url do %>
-  <%= submit_tag 'Add event' %>
-<% end %>

@@ -3,6 +3,8 @@ class AppointmentsController < ApplicationController
 
   def new
     @appointment = Appointment.new
+    @applicant = Applicant.last
+    @recruiter = Recruiter.find(@applicant.recruiter_id)
   end
 
    def create
