@@ -19,6 +19,9 @@ class ExampleController < ApplicationController
 
 
   def calendars
+    @applicant = Applicant.last
+    @recruiter = Recruiter.find(@applicant.recruiter_id)
+    @date = Appointment.last.datetime.strftime("%a, %e %b %Y %H:%M")
     client = Signet::OAuth2::Client.new(client_options)
     client.update!(session[:authorization])
 
@@ -32,6 +35,7 @@ class ExampleController < ApplicationController
 
 
 def new_event
+
     client = Signet::OAuth2::Client.new(client_options)
     client.update!(session[:authorization])
 
@@ -40,8 +44,8 @@ def new_event
 
     today = Date.today
 
-    applicant = Applicant.last
-    recruiter = Recruiter.find(applicant.recruiter_id)
+    @applicant = Applicant.last
+    @recruiter = Recruiter.find(applicant.recruiter_id)
 
     applicant_attendee = Google::Apis::CalendarV3::EventAttendee.new
     applicant_attendee.email = applicant.email
@@ -49,7 +53,7 @@ def new_event
     recruiter_attendee = Google::Apis::CalendarV3::EventAttendee.new
     recruiter_attendee.email = recruiter.email
 
-    event = Google::Apis::CalendarV3::Event.new({
+    @event = Google::Apis::CalendarV3::Event.new({
       start: Google::Apis::CalendarV3::EventDateTime.new({date_time: Appointment.last.datetime.rfc3339 }),
       end: Google::Apis::CalendarV3::EventDateTime.new({date_time: (Appointment.last.datetime.+3600).rfc3339 }),
       summary: "#{applicant.first_name} meets #{recruiter.name}",
@@ -58,7 +62,7 @@ def new_event
 
     })
 
-    notification = Google::Apis::CalendarV3::CalendarNotification.new({
+    notification = Google::Apis::CalendarV3::Event::Reminders.new({
       delivery_method: "email"
     })
 
