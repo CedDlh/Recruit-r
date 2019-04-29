@@ -26,6 +26,8 @@ class ExampleController < ApplicationController
     service.authorization = client
 
     @calendar_list = service.list_calendar_lists
+    rescue Google::Apis::AuthorizationError
+    response = client.refresh!
   end
 
   def new_event
@@ -45,8 +47,6 @@ class ExampleController < ApplicationController
     })
 
     #service.insert_event('primary', event)
-
-
 
 
     service.insert_event('primary', event) do | result, err|

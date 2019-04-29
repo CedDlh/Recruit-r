@@ -27,6 +27,7 @@ class ApplicantsController < ApplicationController
 
     end
      @applicant.save!
+     redirect_to new_appointment_path(@applicant)
     #@recruiter = Recruiter.find(@applicant.recruiter_id)
   end
 
