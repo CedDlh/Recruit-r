@@ -2,6 +2,16 @@ class ApplicantsController < ApplicationController
 
   def new
     @applicant = Applicant.new
+    @positions = Position.all
+    #@position = Position.
+    @positions_id = []
+    @positions.each do |position|
+      unless @positions.empty?
+        @positions_id << position.id
+        @positions_id
+      end
+    end
+
    # redirect_to applicant_path(@applicant)
 
   end
@@ -12,20 +22,20 @@ class ApplicantsController < ApplicationController
     @appointment = Appointment.new
     position = Position.find(@applicant.position_id)
     position_skills = position.skill.split(",")
-    all_recuiter = Recruiter.all
+    all_recruiter = Recruiter.all
     @rec_matches = []
-    all_recuiter.each do |recruiter|
+    all_recruiter.each do |recruiter|
       recruiter_skills = recruiter.skills.split(",")
       unless (recruiter_skills & position_skills).empty?
         @rec_matches << recruiter
       end
     end
     # Create rec_matches array of names
-    @match_name = []
+    @match_id = []
     @rec_matches.each do |match|
-      @match_name << match.id
+      @match_id << match.id
     #@applicant.recruiter_id = 2#
-     @match_name
+     @match_id
 
     end
      @applicant.save!
