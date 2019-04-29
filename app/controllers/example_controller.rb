@@ -40,9 +40,10 @@ class ExampleController < ApplicationController
     today = Date.today
 
     event = Google::Apis::CalendarV3::Event.new({
-      start: Google::Apis::CalendarV3::EventDateTime.new(date: today),
-      end: Google::Apis::CalendarV3::EventDateTime.new(date: today + 1),
-      summary: "#{Applicant.last.first_name} meets #{Recruiter.find(Applicant.last.recruiter_id).name}"
+      start: Google::Apis::CalendarV3::EventDateTime.new(date: Appointment.last.date),
+      end: Google::Apis::CalendarV3::EventDateTime.new(date: Appointment.last.date + 1),
+      summary: "#{Applicant.last.first_name} meets #{Recruiter.find(Applicant.last.recruiter_id).name}",
+      #attendees: ArrayGoogle::Apis::CalendarV3::EventAttendee(Applicant.last.first_name)
 
     })
 
