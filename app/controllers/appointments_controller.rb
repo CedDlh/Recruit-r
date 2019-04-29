@@ -7,13 +7,12 @@ class AppointmentsController < ApplicationController
 
    def create
      @appointment = Appointment.new(appointment_params)
-
-     #@recruiter = Recruiter.find(params[:id])
-     # @applicant = Applicant.find(params[:applicant_id])
-     #
-     # @appointment.applicant = @applicant
-     # @appointment.recruiter = @recruiter
+     @recruiter = Applicant.last.recruiter_id
+    @applicant = Applicant.last.id
+    @appointment.applicant_id = @applicant
+     @appointment.recruiter_id = @recruiter
      @appointment.save!
+     redirect_to calendars_path
   end
 
 private
