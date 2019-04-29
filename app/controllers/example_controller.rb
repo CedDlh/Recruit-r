@@ -30,7 +30,8 @@ class ExampleController < ApplicationController
     response = client.refresh!
   end
 
-  def new_event
+
+def new_event
     client = Signet::OAuth2::Client.new(client_options)
     client.update!(session[:authorization])
 
@@ -39,10 +40,20 @@ class ExampleController < ApplicationController
 
     today = Date.today
 
+    applicant = Applicant.last
+    recruiter = Recruiter.find(applicant.recruiter_id)
+
+    applicant_attendee = Google::Apis::CalendarV3::EventAttendee.new
+    applicant_attendee.email = applicant.email
+
+    recruiter_attendee = Google::Apis::CalendarV3::EventAttendee.new
+    recruiter_attendee.email = recruiter.email
+
     event = Google::Apis::CalendarV3::Event.new({
       start: Google::Apis::CalendarV3::EventDateTime.new(date: Appointment.last.date),
       end: Google::Apis::CalendarV3::EventDateTime.new(date: Appointment.last.date + 1),
-      summary: "#{Applicant.last.first_name} meets #{Recruiter.find(Applicant.last.recruiter_id).name}",
+      summary: "#{applicant.first_name} meets #{recruiter.name}",
+      attendees: [applicant_attendee, recruiter_attendee]
       #attendees: ArrayGoogle::Apis::CalendarV3::EventAttendee(Applicant.last.first_name)
 
     })
