@@ -44,8 +44,8 @@ def new_event
 
     today = Date.today
 
-    @applicant = Applicant.last
-    @recruiter = Recruiter.find(applicant.recruiter_id)
+    applicant = Applicant.last
+    recruiter = Recruiter.find(applicant.recruiter_id)
 
     applicant_attendee = Google::Apis::CalendarV3::EventAttendee.new
     applicant_attendee.email = applicant.email
@@ -69,7 +69,7 @@ def new_event
     #service.insert_event('primary', event)
 
 
-    service.insert_event('primary', event) do | result, err|
+    service.insert_event('primary', @event) do | result, err|
       if err.nil?
         result.html_link
       end

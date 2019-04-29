@@ -6,7 +6,7 @@
 
 
 
-<%@match_name.each do |match| %>
+<%@match_id.each do |match| %>
     <ul>
       <li><%= match %></li>
     </ul>
@@ -15,6 +15,7 @@
 
 
 <%= simple_form_for(@applicant, url: applicant_path, method: :patch) do |f| %>
-  <%= f.select :recruiter_id, @match_name %>
+
+  <%= f.select :recruiter_id, options_for_select(@rec_matches.collect { | recruiter | [recruiter.name, recruiter.id] }, @match_id), {}, {} %>
   <%= f.button :submit %>
 <% end %>
