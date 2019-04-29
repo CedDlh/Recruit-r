@@ -2,6 +2,8 @@ class ApplicantsController < ApplicationController
 
   def new
     @applicant = Applicant.new
+   # redirect_to applicant_path(@applicant)
+
   end
 
 
@@ -27,7 +29,7 @@ class ApplicantsController < ApplicationController
 
     end
      @applicant.save!
-     redirect_to new_appointment_path(@applicant)
+
     #@recruiter = Recruiter.find(@applicant.recruiter_id)
   end
 
@@ -45,6 +47,7 @@ class ApplicantsController < ApplicationController
     @applicant = Applicant.find(params[:id])
     @applicant.update(applicant_params)
     @applicant.save
+    redirect_to new_appointment_path(@applicant)
   end
 
 private
