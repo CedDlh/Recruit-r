@@ -74,9 +74,10 @@ def new_event
         result.html_link
       end
     end
+    redirect_to appointment_confirmed_path
   end
 
-  #redirect_to event_url
+
 
   private
 
