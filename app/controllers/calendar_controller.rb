@@ -66,7 +66,6 @@ def new_event
       delivery_method: "email"
     })
 
-    #service.insert_event('primary', event)
 
 
     service.insert_event('primary', @event) do | result, err|

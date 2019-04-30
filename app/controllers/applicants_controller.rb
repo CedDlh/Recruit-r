@@ -3,7 +3,6 @@ class ApplicantsController < ApplicationController
   def new
     @applicant = Applicant.new
     @positions = Position.all
-    #@position = Position.
     @positions_id = []
     @positions.each do |position|
       unless @positions.empty?
@@ -11,9 +10,6 @@ class ApplicantsController < ApplicationController
         @positions_id
       end
     end
-
-   # redirect_to applicant_path(@applicant)
-
   end
 
 
@@ -34,13 +30,9 @@ class ApplicantsController < ApplicationController
     @match_id = []
     @rec_matches.each do |match|
       @match_id << match.id
-    #@applicant.recruiter_id = 2#
-     @match_id
-
+      @match_id
     end
      @applicant.save!
-
-    #@recruiter = Recruiter.find(@applicant.recruiter_id)
   end
 
   def create
@@ -49,9 +41,9 @@ class ApplicantsController < ApplicationController
       redirect_to applicant_path(@applicant)
     else
       redirect_to applicant_path
-
     end
   end
+
 
   def update
     @applicant = Applicant.find(params[:id])
