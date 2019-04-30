@@ -12,14 +12,17 @@
 
 ActiveRecord::Schema.define(version: 2019_04_29_160324) do
 
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
+
   create_table "applicants", force: :cascade do |t|
     t.string "first_name"
     t.string "last_name"
     t.string "email"
-    t.integer "position_id"
+    t.bigint "position_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.integer "recruiter_id"
+    t.bigint "recruiter_id"
     t.index ["position_id"], name: "index_applicants_on_position_id"
     t.index ["recruiter_id"], name: "index_applicants_on_recruiter_id"
   end
@@ -27,8 +30,8 @@ ActiveRecord::Schema.define(version: 2019_04_29_160324) do
   create_table "appointments", force: :cascade do |t|
     t.date "date"
     t.time "time"
-    t.integer "applicant_id"
-    t.integer "recruiter_id"
+    t.bigint "applicant_id"
+    t.bigint "recruiter_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.datetime "datetime"
@@ -51,4 +54,8 @@ ActiveRecord::Schema.define(version: 2019_04_29_160324) do
     t.string "email"
   end
 
+  add_foreign_key "applicants", "positions"
+  add_foreign_key "applicants", "recruiters"
+  add_foreign_key "appointments", "applicants"
+  add_foreign_key "appointments", "recruiters"
 end
