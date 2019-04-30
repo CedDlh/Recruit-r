@@ -1,5 +1,3 @@
 class Position < ApplicationRecord
-has_many :candidates
-
-
+  has_many :candidates
 end
