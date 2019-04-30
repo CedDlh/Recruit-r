@@ -81,7 +81,7 @@ def new_event
   private
 
   def client_options
-    {.
+    {
       client_id: ENV['GOOGLE_CLIENT_ID'],
       client_secret: ENV['GOOGLE_CLIENT_SECRET'],
       authorization_uri: 'https://accounts.google.com/o/oauth2/auth',
