@@ -21,11 +21,11 @@ class ApplicantsController < ApplicationController
     @applicant = Applicant.find(params[:id])
     @appointment = Appointment.new
     position = Position.find(@applicant.position_id)
-    position_skills = position.skill.split(",")
+    position_skills = position.skill.downcase.split(",")
     all_recruiter = Recruiter.all
     @rec_matches = []
     all_recruiter.each do |recruiter|
-      recruiter_skills = recruiter.skills.split(",")
+      recruiter_skills = recruiter.skills.downcase.split(",")
       unless (recruiter_skills & position_skills).empty?
         @rec_matches << recruiter
       end
