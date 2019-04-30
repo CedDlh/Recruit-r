@@ -22,7 +22,7 @@ An appointment is set for a standard time of 1h and both recruiter and applicant
 #### The Position model is available: [here](app/models/position.rb)
 #### The Recruiter model is available: [here](app/models/recruiter.rb)
 
-### The test for the controllers are also available to see in the test file: [here](Recruit-r/test)
+### The test for the controllers are also available to see in the test file: [here](https://github.com/CedDlh/Recruit-r/tree/master/test)
 
 ### The app is currently hosted on Heroku and can be access directly from the home page on the following URL :
 https://recruit-r.herokuapp.com/
