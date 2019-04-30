@@ -14,7 +14,7 @@ class AppointmentsController < ApplicationController
     @appointment.applicant_id = @applicant
     @appointment.recruiter_id = @recruiter
     @appointment.save!
-    redirect_to root_path
+    redirect_to redirect_path
   end
 
 private
