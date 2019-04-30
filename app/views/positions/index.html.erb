@@ -1,12 +1,11 @@
-<h1>Positions#Index</h1>
+<h2>List of Open Position</h2>
 <%@positions.each do |position| %>
     <ul>
-      <li><%= position.name %></li>
+      <li><%= "#{position.name} - #{position.skill} -------#{Applicant.where(position: position).count} applicants" %><a href="/applicants/new" class="btn btn-primary">Add a new candidate</a></li>
     </ul>
   <% end %>
 
-<%@positions.each do |position| %>
-    <ul>
-      <li><%= position.skill %></li>
-    </ul>
-  <% end %>
+  <a href="/positions/new" class="btn btn-primary">Add a new position</a>
+
+  <a href="/welcome/index" class="btn btn-primary">Main menu</a>
+
