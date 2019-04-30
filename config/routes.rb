@@ -5,7 +5,7 @@ Rails.application.routes.draw do
   #post 'applicants/create'
   #post 'positions/create'
 
-  resources :positions, only: [ :index, :show, :create]
+  resources :positions, only: [ :index, :show, :create, :new]
   resources :applicants, only: [ :index, :new, :show, :create, :update]
   resources :recruiters, only: [:index]
   resources :appointments, only: [:new, :create]
@@ -15,4 +15,5 @@ Rails.application.routes.draw do
   get '/callback', to: 'example#callback', as: 'callback'
   get '/calendars', to: 'example#calendars', as: 'calendars'
   post '/events', to: 'example#new_event', as: 'new_event', calendar_id: /[^\/]+/
+  get '/events', to: 'example#appointment_confirmed', as: 'appointment_confirmed'
 end

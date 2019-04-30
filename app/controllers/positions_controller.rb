@@ -6,6 +6,10 @@ class PositionsController < ApplicationController
 
   end
 
+  def new
+    @position = Position.new
+  end
+
   def show
    @position = Position.find(params[:id])
   end
