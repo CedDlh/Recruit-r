@@ -6,7 +6,7 @@ Recruiter.create(name: "Jean", skills:"Javascript, Python, Ruby, Dockers, SQL", 
 
 Recruiter.create(name: "Ryan", skills:"React, CSS, Angular", email:"ryan@gmail.com")
 
-Recuiter.create(name: "Mike", skills:"React, Ruby, Java", email:"mike@gmail.com")
+Recruiter.create(name: "Mike", skills:"React, Ruby, Java", email:"mike@gmail.com")
 
 Recruiter.create(name:"Lucas", skills:"Java, Javascript, Node, Pyhton, Typescript", email:"lucas@gmail.com")
 
