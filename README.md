@@ -24,7 +24,8 @@ An appointment is set for a standard time of 1h and both recruiter and applicant
 
 ### The test for the controllers are also available to see in the test file: [here]
 
-## The app is currently hosted on Heroku and can be access directly from the home page on the following URL : 
+### The app is currently hosted on Heroku and can be access directly from the home page on the following URL :
+https://recruit-r.herokuapp.com/
 
 At the moment the application has no session and is only built for either a single HR manager or a recruiting team using the same interface. 
 
